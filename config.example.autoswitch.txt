@@ -1,0 +1,73 @@
+/*
+ *** Documentation and Example - Pool-selected Algo Threads configuration ***
+ *
+ * This config file is intended to be used with the -c parameter.
+ *
+ * Most people just don't need to manually configure the threads, so better
+ * just run the miner with the --auto parameter and you're good.
+ *
+ * Otherwise, please read first the config.example.txt file to get used to the
+ * terms employed here.
+ *
+ * This config file applies only when you mine with Pool-selected Algo mode,
+ * enabled with --variation 16
+ * It has been tested on MoneroOcean, but should work on other compatible
+ * Algo-switching pools.
+ * 
+ * The Pool-selected Algo Autoswitch lets your pool change the mining algorithm
+ * on the fly to target the most profitable coins.
+ * Since it can switch between two very different algos, we need to configure
+ * each class of algorithms:
+ *
+ * ** The Cryptolight class (Turtle, Mox, Aeon...)
+ * ** The Cryptonight class (Monero, Stellite, Masari...)
+ * ** The CN-Heavy class (Loki, Tube, Haven...)
+ *                         
+ * Three new configuration arrays are introduced, one for each class.
+ * Not the three are mandatory, only one is, the missing other will
+ * make their respective class never mined. For example, if you do NOT
+ * setup the array for CN-Heavy, so no CN-Heavy algo will be mined.
+ * JCE does not make the Cryptonight class mandatory, but most Algo-switching
+ * pool do.
+ *
+ * The CPU array for Cryptolight class is: "cryptolight_cpu_threads_conf"
+ * The CPU array for Cryptonight class is: "cryptonight_cpu_threads_conf"
+ * The CPU array for CN-Heavy class is: "cn_heavy_cpu_threads_conf"
+ * 
+ * It depends on your processor, but the Cryptolight tend to have twice more
+ * threads that Cryptonight, and CN-Heavy twice less.
+ * The content of the arrays is the exact same as in the legacy "cpu_threads_conf"
+ * All four arrays are independent and can be stored in the same config file,
+ * even if I advise to use separate files for Single-algo and Pool-selected Algo
+ * mining, for clarity.
+ *
+ * Below is an example for a fictional 4-Core 4M-Cache CPU
+ *
+ * Note: if you use dual-thread mining, the index in "dual_mine_with" in array-local
+ */
+
+ 
+/* This is the configuration when Cryptolight class algo is mined */
+"cryptolight_cpu_threads_conf" : 
+[ 
+      { "cpu_architecture" : "auto", "affine_to_cpu" : 0, "use_cache" : true, "multi_hash":1 },
+      { "cpu_architecture" : "auto", "affine_to_cpu" : 1, "use_cache" : true, "multi_hash":1 },
+      { "cpu_architecture" : "auto", "affine_to_cpu" : 2, "use_cache" : true, "multi_hash":1 },
+      { "cpu_architecture" : "auto", "affine_to_cpu" : 3, "use_cache" : true, "multi_hash":1 },
+],
+ 
+/* This is the configuration when Cryptonight class algo is mined */
+"cryptonight_cpu_threads_conf" : 
+[ 
+      { "cpu_architecture" : "auto", "affine_to_cpu" : 0, "use_cache" : true, "multi_hash":1 },
+      { "cpu_architecture" : "auto", "affine_to_cpu" : 2, "use_cache" : true, "multi_hash":1 },
+],
+
+/* This is the configuration when CN-Heavy class algo is mined */
+"cn_heavy_cpu_threads_conf" : 
+[ 
+      { "cpu_architecture" : "auto", "affine_to_cpu" : 0, "use_cache" : true, "multi_hash":1 },
+],
+
+
+ 
