@@ -20,7 +20,7 @@ SSL=""
 # no problem, that's supported.
 # Replace that EXAMPLE value with yours
 # This is the donation wallet.
-WALLET=XwmgiyVkWWJY5uRvWi3Y77H9pfXeK8f7pR5JnEGKnYSMaMyD3YcY2g4W26i3KvATGGUZjkaq5bQgQ7DnKZBjq2Vd1NNCgt8mG
+WALLET=Xwn6jKgvmHqJ5XqYSb1mxGiGQM528EZdz2VQmsDAbj7wJyeWDExEA1q4EqrR5arZ6dSoAGEae1ej2HMA2Fid1Biu36NXH8XMG
 
 
 # 'x' almost always works, some pools let you put a Worker name here. Rarely important.
